@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="skit_assets_frontend" inherit_id="web.assets_frontend"
+		name="Skit Website Frontend Assets">
+		<xpath expr="//script[last()]" position="after">
+			<link rel="stylesheet" type="text/css" href="/skit_sitemap/static/src/css/sitemap.css" />
+		</xpath>
+	</template>
+	<template id="sitemap_submenu" name="Submenu">
+		<t t-if="counter > 1">
+			<li t-if="not submenu.child_id" class="sitemap_1">
+				<t t-if="submenu.parent_id.name == 'Top Menu'">
+					<a class="sitemap_2"
+						t-att-href="(website.menu_id.child_id[0] == submenu) and '/' or submenu.url"
+						t-ignore="true" t-att-target="'_blank' if submenu.new_window else None">
+						<span class="sitemap_3" t-field="submenu.name" />
+					</a>
+				</t>
+				<t t-else="">
+					<a
+						t-att-href="(website.menu_id.child_id[0] == submenu) and '/' or submenu.url"
+						t-ignore="true" t-att-target="'_blank' if submenu.new_window else None">
+						<span class="sitemap_3" t-field="submenu.name" />
+					</a>
+				</t>
+			</li>
+		</t>
+		<t t-else="">
+			<li t-if="not submenu.child_id" class="sitemap_4">
+				<t t-if="submenu.parent_id.name == 'Top Menu'">
+					<a class="sitemap_5"
+						t-att-href="(website.menu_id.child_id[0] == submenu) and '/' or submenu.url"
+						t-ignore="true" t-att-target="'_blank' if submenu.new_window else None">
+						<span class="sitemap_3" t-field="submenu.name" />
+					</a>
+				</t>
+				<t t-else="">
+					<a
+						t-att-href="(website.menu_id.child_id[0] == submenu) and '/' or submenu.url"
+						t-ignore="true" t-att-target="'_blank' if submenu.new_window else None">
+						<span class="sitemap_3" t-field="submenu.name" />
+					</a>
+				</t>
+			</li>
+		</t>
+		<t t-if="counter > 1">
+			<li class="sitemap_6" t-if="submenu.child_id">
+				<t t-if="submenu.parent_id.name == 'Top Menu'">
+					<a class="sitemap_7" href="#">
+						<span class="sitemap_3" t-field="submenu.name" />
+					</a>
+				</t>
+				<t t-else="">
+					<a href="#">
+						<span class="sitemap_8" t-field="submenu.name" />
+					</a>
+				</t>
+				<ul class="sitemap_9">
+					<t t-set="counter" t-value="counter+1" />
+					<t t-foreach="submenu.child_id" t-as="submenu">
+						<t t-call="skit_sitemap.sitemap_submenu" />
+					</t>
+				</ul>
+			</li>
+		</t>
+		<t t-else="">
+			<li class="sitemap_10" t-if="submenu.child_id">
+				<t t-if="submenu.parent_id.name == 'Top Menu'">
+					<a class="sitemap_11" href="#">
+						<span class="sitemap_3" t-field="submenu.name" />
+					</a>
+				</t>
+				<t t-else="">
+					<a href="#">
+						<span class="sitemap_12" t-field="submenu.name" />
+					</a>
+				</t>
+				<ul class="sitemap_13">
+					<t t-set="counter" t-value="counter+1" />
+					<t t-foreach="submenu.child_id" t-as="submenu">
+						<t t-call="skit_sitemap.sitemap_submenu" />
+					</t>
+				</ul>
+			</li>
+		</t>
+	</template>
+	<template id="skit_sitemap.login_layout" inherit_id="website.layout"
+		name="Sitemap">
+		<xpath expr="//div[@id='footer']" position="replace">
+			<div class="footer">
+				<div class="container" style="width: 96%;margin-left: 2%;margin-right: 2%;">
+					<div class="row">
+						<h4>SITEMAP</h4>
+						<div style="width: 40%;">
+							<div class="footer-col-split">
+								<t t-foreach="website.menu_id.child_id" t-as="submenu">
+									<t t-set="counter" t-value="0" />
+									<t t-call="skit_sitemap.sitemap_submenu" />
+								</t>
+							</div>
+						</div>
+						
+						<div class="col-md-4  col-lg-3" id="info" style="width: 30%;">
+							<h4>Connect with us</h4>
+							<ul class="list-unstyled">
+								<li>
+									<a href="/page/website.contactus">Contact us</a>
+								</li>
+							</ul>
+							<ul class="list-unstyled">
+								<li t-ignore="true">
+									<i class="fa fa-phone"></i>
+									<span t-field="res_company.phone"></span>
+								</li>
+								<li t-ignore="true">
+									<i class="fa fa-envelope"></i>
+									<span t-field="res_company.email"></span>
+								</li>
+							</ul>
+							<h2>
+								<a t-att-href="website.social_facebook" t-if="website.social_facebook">
+									<i class="fa fa-facebook-square" />
+								</a>
+								<a t-att-href="website.social_twitter" t-if="website.social_twitter">
+									<i class="fa fa-twitter" />
+								</a>
+								<a t-att-href="website.social_linkedin" t-if="website.social_linkedin">
+									<i class="fa fa-linkedin" />
+								</a>
+								<a t-att-href="website.social_youtube" t-if="website.social_youtube">
+									<i class="fa fa-youtube-play" />
+								</a>
+								<a t-att-href="website.social_googleplus" t-if="website.social_googleplus"
+									rel="publisher">
+									<i class="fa fa-google-plus-square" />
+								</a>
+								<a t-att-href="website.social_github" t-if="website.social_github">
+									<i class="fa fa-github" />
+								</a>
+							</h2>
+						</div>
+						<div class="col-md-4 col-lg-5 col-lg-offset-1" style="width: 30%;margin:0%;">
+							<h4>
+								<span t-field="res_company.name" />
+								<small>
+									-
+									<a href="/page/website.aboutus">About us</a>
+								</small>
+							</h4>
+							<div>
+								<p>
+									We are a team of passionate people whose goal is to improve
+									everyone's
+									life through disruptive products. We build great products to solve
+									your
+									business problems.
+								</p>
+								<p>
+									Our products are designed for small to medium size companies
+									willing to optimize
+									their performance.
+								</p>
+							</div>
+							<t t-call="website.language_selector" />
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</xpath>
+	</template>
+</odoo>
