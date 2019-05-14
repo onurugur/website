@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
-import openerp.http as http
-from openerp.http import request
+import odoo.http as http
+from odoo.http import request
 import logging
 _logger = logging.getLogger(__name__)
 import werkzeug
 import base64
 import re
 import json
-import openerp
+import odoo
     
 class WebsiteStyleManager(http.Controller):
 

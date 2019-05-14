@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+ <template id="products_categories_description" inherit_id="website_sale.products" active="False" customize_show="True" name="eCommerce Categories">
+        <xpath expr="//div[@id='products_grid']" position="before">
+        	<t t-if="category and category.description" >
+        		<div class="col-md-9 col-sm-8">
+           				     <div itemprop="description" t-field="category.description"></div>
+        		</div>
+        	</t>
+            
+        </xpath>
+        <xpath expr="//div[@id='products_grid']" position="attributes">
+        	 <attribute name="class">col-md-offset-3 col-sm-offset-4 col-md-9 col-sm-8 col-xs-12</attribute>
+       	</xpath>
+        
+    </template>
+
+
+</odoo>

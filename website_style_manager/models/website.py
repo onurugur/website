@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 import requests
 from lxml import html, etree
-import openerp
+import odoo
 import logging
 _logger = logging.getLogger(__name__)
 
-from openerp import api, fields, models
+from odoo import api, fields, models
 
 class WebsiteStyleManager(models.Model):
 
@@ -30,7 +30,7 @@ class WebsiteStyleManager(models.Model):
 
     @api.one
     def generate_less(self):
-        module_directory = openerp.modules.get_module_path("website_style_manager")
+        module_directory = odoo.modules.get_module_path("website_style_manager")
         full_path = module_directory + "/static/src/less/override.less"
 
         less_data = ""

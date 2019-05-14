@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <template id="404" inherit_id="website.404">
         <xpath expr="//div[hasclass('container')]" position="replace">

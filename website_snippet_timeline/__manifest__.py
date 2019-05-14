@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 {
     'name': 'Website Block Timeline',
     'summary': 'Adds an extra website block',

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
+<odoo>
     <data>
 
         <template id="website_style_manager_editor" inherit_id="website.assets_editor" name="Website Style Manager Resources">
@@ -34,4 +34,4 @@
         </template>
 
     </data>
-</openerp>
+</odoo>
